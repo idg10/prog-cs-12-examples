@@ -6,12 +6,14 @@ namespace Serialization;
 
 public class SystemTextJson
 {
-    public static void Use()
+    private static readonly JsonSerializerOptions SerializeIndented =
+        new() { WriteIndented = true };
+    public static string SerializeJson()
     {
         var model = new SimpleData
         {
             Id = 42,
-            Names = new[] { "Bell", "Stacey", "her", "Jane" },
+            Names = ["Bell", "Stacey", "her", "Jane"],
             Location = new NestedData
             {
                 LocationName = "London",
@@ -25,11 +27,11 @@ public class SystemTextJson
             }
         };
 
-        string json = JsonSerializer.Serialize(
-            model,
-            new JsonSerializerOptions { WriteIndented = true });
-        Console.WriteLine(json);
+        return JsonSerializer.Serialize(model, SerializeIndented);
+    }
 
+    public static void DeserializewJson(string json)
+    {
         var deserialized = JsonSerializer.Deserialize<SimpleData>(json);
         if (deserialized is not null)
         {
@@ -70,26 +72,23 @@ public class SystemTextJson
         mapNode["iceCream"] = 99;
     }
 
+    private static readonly JsonSerializerOptions camelCaseOptions =
+        new(JsonSerializerDefaults.Web) { WriteIndented = true };
     public static string AutoCamelCase(SimpleData model)
     {
-        var options = new JsonSerializerOptions(JsonSerializerDefaults.Web)
-        {
-            WriteIndented = true
-        };
-        string json = JsonSerializer.Serialize(
+        return JsonSerializer.Serialize(
             model,
-            options);
-
-        return json;
+            camelCaseOptions);
     }
 
-    public static string SerializeWithCircularReferences()
-    {
-        var options = new JsonSerializerOptions(JsonSerializerDefaults.Web)
+    private static readonly JsonSerializerOptions jsonWithRefs =
+        new(JsonSerializerDefaults.Web)
         {
             WriteIndented = true,
             ReferenceHandler = ReferenceHandler.Preserve
         };
+    public static string SerializeWithCircularReferences()
+    {
         var circle = new SelfRef
         {
             Name = "Top",
@@ -99,23 +98,30 @@ public class SystemTextJson
             }
         };
         circle.Next.Next = circle;
-        string json = JsonSerializer.Serialize(circle, options);
+        string json = JsonSerializer.Serialize(circle, jsonWithRefs);
 
         return json;
     }
 
+    public static void UseCodeGenDeserialization(string json)
+    {
+        SimpleData? data = JsonSerializer.Deserialize(
+            json, CodeGenSerializationContext.Default.SimpleData);
+        Console.WriteLine(data?.Id ?? -1);
+    }
+
     public class SimpleData
     {
-        public int Id { get; set; }
-        public IList<string>? Names { get; set; }
-        public NestedData? Location { get; set; }
-        public IDictionary<string, int>? Map { get; set; }
+        public required int Id { get; set; }
+        public required IList<string> Names { get; set; }
+        public required NestedData Location { get; set; }
+        public required IDictionary<string, int> Map { get; set; }
     }
 
     public class NestedData
     {
-        public string? LocationName { get; set; }
-        public double Latitude { get; set; }
-        public double Longitude { get; set; }
+        public required string LocationName { get; set; }
+        public required double Latitude { get; set; }
+        public required double Longitude { get; set; }
     }
 }

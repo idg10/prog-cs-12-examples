@@ -1,9 +1,41 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!--
+    The dependency on Newtonsoft.Json verson 9.0.1 will normally triger a NU1903 warning, because
+    all versions of that package before 13.0.1 have a known security vulnerability:
+      https://github.com/advisories/GHSA-5crp-9r3c-p9vr
+    It's OK to disable it in this case for two reasons:
+    
+      1) That's not the version we actually end up with at runtime. That's half the
+          point of this example - it illustrates that the default behavior, even
+          with a custom assembly load context, is unification, and because the plug-in
+          host specifies a later version of Newtonsoft.Json, plug-ins get that later
+          version. (The other half of the point of this example is that a custom
+          assembly load context can enable plug-ins to have *different* versions of
+          assemblies than the host. The custom context in this example allows that
+          for most assemblies, but requires plug-ins to use the exact same versio
+          of Newtonsoft.Json as the host.)
+      2) The vulnerability only affects code that allows external actors to pass
+          in arbitrary JSON. (This is normal in applications that provide JSON-based
+          web services. That's a common use case, which is why this is considered
+          to be a critical vulnerability.) Since this application doesn't do that
+          it is unaffected by the vulnerability, so even if 1) didn't apply (and
+          it does), it wouldn't matter.
+
+    Upgrading this project to the latest Newtonsoft.Json would defeat the purpose
+    of this example (which is to show that a custom assembly load context can
+    control which assemblies are subject to unification) - the different projects
+    need to be on different versions of Newtonsoft.Json to show that, and the older
+    versions of Newtonsoft.Json all produce this NuGet warning.
+    -->
+    <NoWarn>$(NoWarn);NU1903</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>

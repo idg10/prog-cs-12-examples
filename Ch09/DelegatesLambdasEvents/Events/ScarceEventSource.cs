@@ -16,26 +16,14 @@ public class ScarceEventSource
 
     public event EventHandler EventOne
     {
-        add
-        {
-            AddEvent(EventOneId, value);
-        }
-        remove
-        {
-            RemoveEvent(EventOneId, value);
-        }
+        add => AddEvent(EventOneId, value);
+        remove => RemoveEvent(EventOneId, value);
     }
 
     public event EventHandler EventTwo
     {
-        add
-        {
-            AddEvent(EventTwoId, value);
-        }
-        remove
-        {
-            RemoveEvent(EventTwoId, value);
-        }
+        add => AddEvent(EventTwoId, value);
+        remove => RemoveEvent(EventTwoId, value);
     }
 
     public void RaiseBoth()

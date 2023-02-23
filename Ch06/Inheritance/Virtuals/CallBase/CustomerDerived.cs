@@ -6,7 +6,7 @@ public class CustomerDerived : LibraryBase
 {
     public override void Start()
     {
-        Console.WriteLine("Derived type's Start method");
+        Console.WriteLine("CustomerDerived starting");
         base.Start();
     }
 }

@@ -2,11 +2,23 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 
-    <NoWarn>IDE0019;IDE0059;IDE0060;CA1816</NoWarn>
+    <!--
+    IDE0019 - Use pattern matching. We use "d != null" in one example because I wanted to illustrate the old-style way of
+              testing with as. This has effectively been superceded by the use of patterns shown in the following example.
+              If I had replaced "d != null" with the now-preferred "d is not null" then a) it would have been confusing
+              because that's also a pattern and b) it would no longer have represented the "how we used to do things before
+              C# got pattern matching" case.
+    IDE0059 - unnecessary assignment. Various examples exist just to illustrate conversions (so they don't go on to use the result)
+    
+    CA1816  - Call SuppressFinalize in Dispose. Nobody should be writing finalizers these days except in extremely specialized
+              circumstances. This analyzer is effectively encouraging you to enable the use of finalization, which I believe
+              is fundamentally bad advice.
+    -->
+    <NoWarn>IDE0019;IDE0059;CA1816</NoWarn>
   </PropertyGroup>
 
 </Project>

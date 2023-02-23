@@ -3,7 +3,7 @@
 // With the default SDK settings, the code analysis rules detect the problem
 // this example illustrates, reporting CA2013 warnings. This particular example
 // makes this mistake on purpose, so we disable the warning.
-// (Note: VS sometimes spuriously labels this as an unnecessary suprpression.)
+// (Note: VS sometimes spuriously labels this as an unnecessary suppression.)
 #pragma warning disable CA2013
 
 var p1 = new Point(40, 2);

@@ -2,9 +2,16 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!--
+    IDE0028 - since C# 12.0's collection expressions don't support dictionaries in general I don't like the recommendation to use them to initialize empty dictionaries.
+    -->
+    <NoWarn>$(NoWarn);IDE0028</NoWarn>
   </PropertyGroup>
 
 </Project>

@@ -2,7 +2,7 @@
 
 public class ThresholdComparer
 {
-    public int Threshold { get; set; }
+    public required int Threshold { get; init; }
 
     public bool IsGreaterThan(int value) => value > Threshold;
 

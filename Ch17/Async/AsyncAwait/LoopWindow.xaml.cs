@@ -80,10 +80,10 @@ public partial class LoopWindow : Window
                 }
             };
         },
-            uiScheduler);
+        uiScheduler);
     }
 
-    public static async Task<string?> GetServerHeader(
+    public static async Task<string?> GetServerHeaderAsync(
         string url, IHttpClientFactory cf)
     {
         using (HttpClient w = cf.CreateClient())

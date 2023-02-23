@@ -2,7 +2,7 @@
 
 public class Bar
 {
-    private static DateTime _firstUsed;
+    private readonly static DateTime _firstUsed;
     static Bar()
     {
         Console.WriteLine("Bar's static constructor");

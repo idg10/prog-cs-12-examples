@@ -1,14 +1,8 @@
 ﻿namespace Threading;
 
-class Notifier
+public class Notifier(Action callback)
 {
-    private readonly Action _callback;
     private readonly ThreadLocal<bool> _isCallbackInProgress = new();
-
-    public Notifier(Action callback)
-    {
-        _callback = callback;
-    }
 
     public void Notify()
     {
@@ -21,7 +15,7 @@ class Notifier
         try
         {
             _isCallbackInProgress.Value = true;
-            _callback();
+            callback();
         }
         finally
         {

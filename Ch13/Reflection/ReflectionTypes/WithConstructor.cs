@@ -1,12 +1,7 @@
 ﻿// Different namespace to match Example 3
 namespace MyApp;
 
-public class WithConstructor
+public class WithConstructor(string arg)
 {
-    public WithConstructor(string arg)
-    {
-        Arg = arg;
-    }
-
-    public string Arg { get; }
+    public string Arg { get; } = arg;
 }

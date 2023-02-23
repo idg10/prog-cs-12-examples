@@ -79,26 +79,14 @@ class Program
             .Select(vars => vars.culture.Name);
     }
 
-    public static void MeaninglessQuery()
-    {
-        var q = from x in new SillyLinqProvider()
-                where int.Parse(x)
-                select x.Hour;
-    }
-
-    public static void EffectOfMeaninglessQuery()
-    {
-        var q = new SillyLinqProvider().Where(x => int.Parse(x)).Select(x => x.Hour);
-    }
-
     public static void AccidentalReevaluation()
     {
-        var commaCultures =
+        IEnumerable<CultureInfo> commaCultures =
             from culture in CultureInfo.GetCultures(CultureTypes.AllCultures)
             where culture.NumberFormat.NumberDecimalSeparator == ","
             select culture;
 
-        object[] numbers = { 1, 100, 100.2, 10000.2 };
+        object[] numbers = [1, 100, 100.2, 10000.2];
 
         foreach (object number in numbers)
         {

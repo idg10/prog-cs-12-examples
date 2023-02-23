@@ -4,9 +4,9 @@ public static class Subranges
 {
     public static void SingleOperator()
     {
-        var q = from course in Course.Catalog
-                where course.Category == "MAT" && course.Number == 101
-                select course;
+        IEnumerable<Course> q = from course in Course.Catalog
+                                where course.Category == "MAT" && course.Number == 101
+                                select course;
 
         Course geometry = q.Single();
     }
@@ -19,15 +19,15 @@ public static class Subranges
 
     public static void FirstOperator()
     {
-        var q = from course in Course.Catalog
-                orderby course.Duration descending
-                select course;
+        IOrderedEnumerable<Course> q = from course in Course.Catalog
+                                       orderby course.Duration descending
+                                       select course;
         Course longest = q.First();
     }
 
     public static void SingleOperatorWithSpecificDefault()
     {
-        int[] numbers = Array.Empty<int>();
+        int[] numbers = [];
 
         int valueOrNegative = numbers.SingleOrDefault(-1);
 
@@ -36,7 +36,7 @@ public static class Subranges
 
     public static void BadUseOfElementAt()
     {
-        var mathsCourses = Course.Catalog.Where(c => c.Category == "MAT");
+        IEnumerable<Course> mathsCourses = Course.Catalog.Where(c => c.Category == "MAT");
         for (int i = 0; i < mathsCourses.Count(); ++i)
         {
             // Never do this!

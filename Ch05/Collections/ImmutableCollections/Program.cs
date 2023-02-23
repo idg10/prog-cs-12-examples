@@ -1,4 +1,5 @@
-﻿using System.Collections.Immutable;
+﻿using System.Collections.Frozen;
+using System.Collections.Immutable;
 
 namespace ImmutableCollections;
 
@@ -31,4 +32,24 @@ class Program
 
         System.Console.WriteLine(d[2]);
     }
+
+    public static void CreateListWithCollectionExpression()
+    {
+        ImmutableList<int> numbers = [1, 2, 3, 4, 5];
+    }
+
+    public static void UseFrozenCollections()
+    {
+        Dictionary<int, string> ordinary = GetOrdinaryDictionary();
+        FrozenDictionary<int, string> frozen = ordinary.ToFrozenDictionary();
+
+        Console.WriteLine(frozen[1]);
+    }
+
+    private static Dictionary<int, string> GetOrdinaryDictionary() => new()
+    {
+        { 1, "One" },
+        { 2, "Two" },
+        { 3, "Three" },
+    };
 }

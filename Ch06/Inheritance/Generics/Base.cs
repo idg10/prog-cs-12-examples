@@ -37,7 +37,7 @@ public class Base
 
     public static void PassDerivedElementTypeArray()
     {
-        Derived[] derivedBases = { new Derived(), new Derived() };
+        Derived[] derivedBases = [new Derived(), new Derived()];
         UseBaseArray(derivedBases);
     }
 }

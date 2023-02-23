@@ -10,9 +10,12 @@ public static class Async
         public static IObservable<string> GetWebPageAsObservable(
             Uri pageUrl, IHttpClientFactory cf)
         {
-            HttpClient web = cf.CreateClient();
-            Task<string> getPageTask = web.GetStringAsync(pageUrl);
-            return getPageTask.ToObservable();
+            async Task<string> GetPageAsync()
+            {
+                using HttpClient web = cf.CreateClient();
+                return await web.GetStringAsync(pageUrl).ConfigureAwait(false);
+            }
+            return GetPageAsync().ToObservable();
         }
     }
 
@@ -21,10 +24,10 @@ public static class Async
         public static IObservable<string> GetWebPageAsObservable(
             Uri pageUrl, IHttpClientFactory cf)
         {
-            return Observable.FromAsync(() =>
+            return Observable.FromAsync(async () =>
             {
-                HttpClient web = cf.CreateClient();
-                return web.GetStringAsync(pageUrl);
+                using HttpClient web = cf.CreateClient();
+                return await web.GetStringAsync(pageUrl);
             });
         }
     }

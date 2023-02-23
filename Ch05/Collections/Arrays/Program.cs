@@ -23,3 +23,5 @@ numbers[numbers.Length - 1] = 99;
 
 var values = new Complex[10];
 values[0] = new Complex(10, 1);
+
+Arrays.Searching.SearchPerf();

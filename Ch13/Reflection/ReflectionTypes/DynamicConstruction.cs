@@ -13,7 +13,7 @@ public static class DynamicConstruction
             false,
             BindingFlags.Public | BindingFlags.Instance,
             null,
-            new object[] { "Constructor argument" },
+            ["Constructor argument"],
             null,
             null);
     }

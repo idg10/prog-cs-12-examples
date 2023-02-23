@@ -24,16 +24,16 @@ class Program
                 {
                     Console.WriteLine(r.ReadLine()!.Length);
                 }
-                catch (IOException x)
+                catch (IOException ex)
                 {
                     Console.WriteLine("Error while reading file: {0}",
-                        x.Message);
+                        ex.Message);
                 }
             }
         }
-        catch (FileNotFoundException x)
+        catch (FileNotFoundException ex)
         {
-            Console.WriteLine("Couldn't find the file '{0}'", x.FileName);
+            Console.WriteLine("Couldn't find the file '{0}'", ex.FileName);
         }
     }
 }

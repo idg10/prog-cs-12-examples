@@ -8,9 +8,9 @@ internal class ObjectVisibility
         IDictionary<TKey, TValue> input)
     {
         var sb = new StringBuilder();
-        foreach (var item in input)
+        foreach ((TKey key, TValue value) in input)
         {
-            sb.AppendFormat("{0}: {1}", item.Key, item.Value);
+            sb.Append($"{key}: {value}");
             sb.AppendLine();
         }
 

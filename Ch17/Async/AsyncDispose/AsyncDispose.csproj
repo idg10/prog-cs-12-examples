@@ -2,11 +2,17 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 
-    <NoWarn>IDE0060;IDE0063</NoWarn>
+    <!--
+    IDE0290 - Use primary constructor. The one place it suggested this is DiagnosticWriter, where we do
+                some work in the constructor body (constructing a StreamWriter). I find that moving such
+                code into a field initializer does not improve clarity because it makes it harder to notice
+                that there's a potential for failure here.
+    -->
+    <NoWarn>IDE0060;IDE0063;IDE0290</NoWarn>
   </PropertyGroup>
 
 </Project>

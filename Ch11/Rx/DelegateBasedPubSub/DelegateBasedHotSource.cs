@@ -8,11 +8,11 @@ public class DelegateBasedHotSource
     public static void Run()
     {
         IObservable<char> singularHotSource = Observable.Create(
-            (Func<IObserver<char>, IDisposable>)(obs =>
+            (Func<IObserver<char>, IDisposable>)(observer =>
             {
                 while (true)
                 {
-                    obs.OnNext(Console.ReadKey(true).KeyChar);
+                    observer.OnNext(Console.ReadKey(true).KeyChar);
                 }
             }));
 

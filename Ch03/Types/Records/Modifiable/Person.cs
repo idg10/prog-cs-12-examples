@@ -1,13 +1,7 @@
 ﻿namespace Records.Modifiable;
 
-public record Person
+public record Person(string Name, string FavoriteColor)
 {
-    public Person(string name, string favoriteColor)
-    {
-        this.Name = name;
-        this.FavoriteColor = favoriteColor;
-    }
-
-    public string Name { get; set; }
-    public string FavoriteColor { get; set; }
+    public string Name { get; set; } = Name;
+    public string FavoriteColor { get; set; } = FavoriteColor;
 }

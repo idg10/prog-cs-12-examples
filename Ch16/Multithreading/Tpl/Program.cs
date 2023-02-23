@@ -5,16 +5,15 @@ class Program
     static async Task Main()
     {
         var w = new HttpClient();
-        string url = "https://endjin.com/";
-        Task<string> webGetTask = w.GetStringAsync(url);
+        Task<string> webGetTask = w.GetStringAsync("https://endjin.com/");
 
         string pageContent = await webGetTask;
 
 #pragma warning disable CS4014 // The example doesn't do anything with the task returned, but the compiler doesn't like us doing that in an async method. Normally in an async method we just await instead of using ContinueWith
-        webGetTask.ContinueWith(t =>
+        webGetTask.ContinueWith(static t =>
         {
             string webContent = t.Result;
-            Console.WriteLine("Web page length: " + webContent.Length);
+            Console.WriteLine($"Web page length: {webContent.Length}");
         });
 #pragma warning restore CS4014
     }

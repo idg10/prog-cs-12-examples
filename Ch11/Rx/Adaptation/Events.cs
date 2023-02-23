@@ -5,27 +5,15 @@ namespace Adaptation;
 
 public static class Events
 {
-    public static void NameBasedWrapping()
+    public static void Wrapping()
     {
-        string path = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
-        var watcher = new FileSystemWatcher(path);
-        watcher.EnableRaisingEvents = true;
-
-        IObservable<EventPattern<FileSystemEventArgs>> changes =
-            Observable.FromEventPattern<FileSystemEventArgs>(
-                watcher, nameof(watcher.Created));
-        changes.Subscribe(evt => Console.WriteLine(evt.EventArgs.FullPath));
-    }
-
-    public static void DelegateBasedWrapping()
-    {
-        string path = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
-        var watcher = new FileSystemWatcher(path);
-        watcher.EnableRaisingEvents = true;
-
+        string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+        var w = new FileSystemWatcher(path);
         IObservable<EventPattern<FileSystemEventArgs>> changes =
             Observable.FromEventPattern<FileSystemEventHandler, FileSystemEventArgs>(
-            h => watcher.Created += h, h => watcher.Created -= h);
+                h => w.Changed += h, h => w.Changed -= h);
+        w.IncludeSubdirectories = true;
+        w.EnableRaisingEvents = true;
 
         changes.Subscribe(evt => Console.WriteLine(evt.EventArgs.FullPath));
     }

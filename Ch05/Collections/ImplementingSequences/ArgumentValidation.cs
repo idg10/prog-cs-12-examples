@@ -6,10 +6,7 @@ public class ArgumentValidation
 {
     public static IEnumerable<BigInteger> Fibonacci(int count)
     {
-        if (count < 0)
-        {
-            throw new ArgumentOutOfRangeException(nameof(count));
-        }
+        ArgumentOutOfRangeException.ThrowIfNegative(count);
         return Core(count);
 
         static IEnumerable<BigInteger> Core(int count)
@@ -20,7 +17,7 @@ public class ArgumentValidation
             for (int i = 0; i < count; ++i)
             {
                 yield return v1;
-                var tmp = v2;
+                BigInteger tmp = v2;
                 v2 = v1 + v2;
                 v1 = tmp;
             }

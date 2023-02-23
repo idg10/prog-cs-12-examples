@@ -3,18 +3,13 @@ using System.Runtime.Loader;
 
 namespace HostApp;
 
-public class PlugInLoadContext : AssemblyLoadContext
+public class PlugInLoadContext(
+    string pluginPath,
+    ICollection<string> plugInApiAssemblyNames) : AssemblyLoadContext
 {
-    private readonly AssemblyDependencyResolver _resolver;
-    private readonly ICollection<string> _plugInApiAssemblyNames;
-
-    public PlugInLoadContext(
-        string pluginPath,
-        ICollection<string> plugInApiAssemblies)
-    {
-        _resolver = new AssemblyDependencyResolver(pluginPath);
-        _plugInApiAssemblyNames = plugInApiAssemblies;
-    }
+    private readonly AssemblyDependencyResolver _resolver = new(pluginPath);
+    private readonly ICollection<string> _plugInApiAssemblyNames =
+        plugInApiAssemblyNames;
 
     protected override Assembly Load(AssemblyName assemblyName)
     {

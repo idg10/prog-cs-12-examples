@@ -25,6 +25,11 @@ public class Counter
         return new Counter { _count = x + y._count };
     }
 
+    public static Counter operator checked +(Counter x, Counter y)
+    {
+        return new Counter { _count = checked(x._count + y._count) };
+    }
+
     public static explicit operator int(Counter value)
     {
         return value._count;

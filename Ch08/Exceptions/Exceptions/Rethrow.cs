@@ -4,16 +4,18 @@ class Rethrow
 {
     public static void BadRethrow()
     {
+#pragma warning disable CA2200 // Rethrow to preserve stack details - this example exists to illustrate the problem that CA2200 detects
         try
         {
             DoSomething();
         }
-        catch (IOException x)
+        catch (IOException ex)
         {
-            LogIOError(x);
+            LogIOError(ex);
             // This next line is BAD!
-            throw x;  // Do not do this
+            throw ex;  // Do not do this
         }
+#pragma warning restore CA2200 // Rethrow to preserve stack details
     }
 
     public static void GoodRethrow()
@@ -22,9 +24,9 @@ class Rethrow
         {
             DoSomething();
         }
-        catch (IOException x)
+        catch (IOException ex)
         {
-            LogIOError(x);
+            LogIOError(ex);
             throw;
         }
     }
@@ -33,7 +35,7 @@ class Rethrow
     {
     }
 
-    private static void LogIOError(IOException x)
+    private static void LogIOError(IOException ex)
     {
     }
 }

@@ -1,13 +1,7 @@
 ﻿namespace Properties.Auto;
 
-public readonly struct Point
+public readonly struct Point(double x, double y)
 {
-    public Point(double x, double y)
-    {
-        X = x;
-        Y = y;
-    }
-
-    public double X { get; init; }
-    public double Y { get; init; }
+    public double X { get; init; } = x;
+    public double Y { get; init; } = y;
 }

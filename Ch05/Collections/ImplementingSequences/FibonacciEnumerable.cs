@@ -26,7 +26,7 @@ public class FibonacciEnumerable :
         }
         else
         {
-            var tmp = v2;
+            BigInteger tmp = v2;
             v2 = v1 + v2;
             v1 = tmp;
         }

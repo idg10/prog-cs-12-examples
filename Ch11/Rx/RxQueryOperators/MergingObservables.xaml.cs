@@ -15,14 +15,14 @@ public partial class MergingObservables : Window
         InitializeComponent();
 
         IObservable<EventPattern<MouseEventArgs>> downs =
-            Observable.FromEventPattern<MouseEventArgs>(
-                background, nameof(background.MouseDown));
+            Observable.FromEventPattern<MouseButtonEventHandler, MouseEventArgs>(
+                h => background.MouseDown += h, h => background.MouseDown -= h);
         IObservable<EventPattern<MouseEventArgs>> ups =
-            Observable.FromEventPattern<MouseEventArgs>(
-                background, nameof(background.MouseUp));
+            Observable.FromEventPattern<MouseButtonEventHandler, MouseEventArgs>(
+                h => background.MouseUp += h, h => background.MouseUp -= h);
         IObservable<EventPattern<MouseEventArgs>> allMoves =
-            Observable.FromEventPattern<MouseEventArgs>(
-                background, nameof(background.MouseMove));
+            Observable.FromEventPattern<MouseEventHandler, MouseEventArgs>(
+                h => background.MouseMove += h, h => background.MouseMove -= h);
 
         IObservable<EventPattern<MouseEventArgs>> dragMoves =
             from move in allMoves

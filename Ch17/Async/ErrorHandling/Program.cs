@@ -30,7 +30,7 @@ namespace ErrorHandling
                     while (!bodyTextReader.EndOfStream)
                     {
                         string? line = await bodyTextReader.ReadLineAsync();
-                        if (line is not null && longestLine.Length > line.Length)
+                        if (line is not null && line.Length > longestLine.Length)
                         {
                             longestLine = line;
                         }
@@ -46,11 +46,11 @@ namespace ErrorHandling
             {
                 string longest = await FindLongestLineAsync(
                     "http://192.168.22.1/", this.clientFactory);
-                Console.WriteLine("Longest line: " + longest);
+                Console.WriteLine($"Longest line: {longest}");
             }
-            catch (HttpRequestException x)
+            catch (HttpRequestException ex)
             {
-                Console.WriteLine("Error fetching page: " + x.Message);
+                Console.WriteLine($"Error fetching page: {ex.Message}");
             }
         }
 
@@ -84,37 +84,12 @@ namespace ErrorHandling
             try
             {
                 var t = Task.WhenAll(ts);
-                await t.ContinueWith(
-                            x => { },
-                            TaskContinuationOptions.ExecuteSynchronously);
+                await t.ConfigureAwait(ConfigureAwaitOptions.SuppressThrowing);
                 t.Wait();
             }
             catch (AggregateException all)
             {
                 Console.WriteLine(all);
-            }
-        }
-
-        class Additional
-        {
-            static async Task CatchAll(Task[] ts)
-            {
-                Task? t = null;
-                try
-                {
-                    t = Task.WhenAll(ts);
-                    await t;
-                }
-                catch (Exception first)
-                {
-                    Console.WriteLine(first);
-
-                    if (t?.Exception?.InnerExceptions.Count > 1)
-                    {
-                        Console.WriteLine("I've found some more:");
-                        Console.WriteLine(t.Exception);
-                    }
-                }
             }
         }
 

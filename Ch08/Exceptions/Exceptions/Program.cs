@@ -49,9 +49,9 @@ class Program
                 }
             }
         }
-        catch (FileNotFoundException x)
+        catch (FileNotFoundException ex)
         {
-            Console.WriteLine($"File '{x.FileName}' is missing");
+            Console.WriteLine($"File '{ex.FileName}' is missing");
         }
     }
 
@@ -67,17 +67,17 @@ class Program
                 }
             }
         }
-        catch (FileNotFoundException x)
+        catch (FileNotFoundException ex)
         {
-            Console.WriteLine($"File '{x.FileName}' is missing");
+            Console.WriteLine($"File '{ex.FileName}' is missing");
         }
         catch (DirectoryNotFoundException)
         {
             Console.WriteLine($"The containing directory does not exist.");
         }
-        catch (IOException x)
+        catch (IOException ex)
         {
-            Console.WriteLine($"IO error: '{x.Message}'");
+            Console.WriteLine($"IO error: '{ex.Message}'");
         }
     }
 
@@ -88,8 +88,8 @@ class Program
             table.AddEntity(item);
             return true;
         }
-        catch (RequestFailedException x)
-        when (x.Status == 409)
+        catch (RequestFailedException ex)
+        when (ex.Status == 409)
         {
             return false;
         }
@@ -105,9 +105,9 @@ class Program
         return parts[position];
     }
 
-    public static int CountCommas(string text)
+    public static int CountCommas(string input)
     {
-        ArgumentNullException.ThrowIfNull(text);
-        return text.Count(ch => ch == ',');
+        ArgumentNullException.ThrowIfNull(input);
+        return input.Count(ch => ch == ',');
     }
 }

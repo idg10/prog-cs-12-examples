@@ -2,9 +2,11 @@
 
 class Program
 {
+    private static readonly string[] inputs = ["Hello World!", "Hello", "World!", "Hello"];
+
     static void Main()
     {
-        ShowEachDistinctString(new[] { "Hello World!", "Hello", "World!", "Hello" });
+        ShowEachDistinctString(inputs);
     }
 
     public static void ShowEachDistinctString(IEnumerable<string> strings)

@@ -12,22 +12,18 @@ public class FilePusher : IObservable<string>
     {
         using (var sr = new StreamReader(_path))
         {
-            while (!sr.EndOfStream)
+            while (sr.ReadLine() is string line) // Repeats until null returned
             {
-                string? line = sr.ReadLine();
-                if (line is not null)
-                {
-                    observer.OnNext(line);
-                }
+                observer.OnNext(line);
             }
         }
         observer.OnCompleted();
-        return NullDisposable.Instance;
+        return EmptyDisposable.Instance;
     }
 
-    private class NullDisposable : IDisposable
+    private class EmptyDisposable : IDisposable
     {
-        public static NullDisposable Instance = new();
+        public static EmptyDisposable Instance = new();
         public void Dispose() { }
     }
 }

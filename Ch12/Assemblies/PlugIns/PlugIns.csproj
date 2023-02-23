@@ -2,9 +2,25 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!--
+    IDE0028 - Collection initialization can be simplified - this wants us to change this:
+      pi.Foo(new JObject());
+    to this:
+      pi.Foo([]);
+    I think that's a bit baffling. When you understand the heuristic by which this analyzer
+    determines that something is a candidate, it makes sense: a type is a candidate for
+    initialization through a collection expression if it implements IEnumerable and has
+    an Add method. So it's possible to think of a JObject as being a collection-like
+    thing. But in this example I think [] is harder to understand than new JObject()
+    so I think this is an unhelpful suggestion.
+    -->
+    <NoWarn>$(NoWarn);IDE0028</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>

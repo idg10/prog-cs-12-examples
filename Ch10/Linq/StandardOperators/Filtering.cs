@@ -8,11 +8,17 @@ public static class Filtering
             (course, index) => (index % 2 == 0) && course.Duration.TotalHours >= 3);
     }
 
-    static void ShowAllStrings(IEnumerable<object> src)
+    public static void ShowAllStrings(IEnumerable<object> src)
     {
         foreach (string s in src.OfType<string>())
         {
             Console.WriteLine(s);
         }
+    }
+
+    public static void DistinctOperator()
+    {
+        IEnumerable<string> categories =
+            Course.Catalog.Select(c => c.Category).Distinct();
     }
 }

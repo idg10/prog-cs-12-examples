@@ -1,8 +1,8 @@
 ﻿using System;
 
-internal class MyType
+public class MyType
 {
-    private static void SomeMethod()
+    public static void SomeMethod()
     {
         Console.WriteLine("Hello, World!");
     }

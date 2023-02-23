@@ -26,13 +26,13 @@ public static class IEnumerableToObservable
                 inObserver = true;
                 observer.OnCompleted();
             }
-            catch (Exception x)
+            catch (Exception ex)
             {
                 if (inObserver)
                 {
                     throw;
                 }
-                observer.OnError(x);
+                observer.OnError(ex);
             }
             return () => { };
         });

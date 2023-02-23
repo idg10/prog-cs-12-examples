@@ -5,14 +5,14 @@ public class SimpleColdSource : IObservable<string>
     public IDisposable Subscribe(IObserver<string> observer)
     {
         observer.OnNext("Hello,");
-        observer.OnNext("world!");
+        observer.OnNext("World!");
         observer.OnCompleted();
-        return NullDisposable.Instance;
+        return EmptyDisposable.Instance;
     }
 
-    private class NullDisposable : IDisposable
+    private class EmptyDisposable : IDisposable
     {
-        public readonly static NullDisposable Instance = new();
+        public readonly static EmptyDisposable Instance = new();
         public void Dispose() { }
     }
 }

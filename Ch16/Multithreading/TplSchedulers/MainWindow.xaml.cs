@@ -19,8 +19,7 @@ public partial class MainWindow : Window
 
     private void FetchButtonClicked(object sender, RoutedEventArgs e)
     {
-        string url = "https://endjin.com/";
-        Task<string> webGetTask = w.GetStringAsync(url);
+        Task<string> webGetTask = w.GetStringAsync("https://endjin.com/");
 
         webGetTask.ContinueWith(t =>
         {

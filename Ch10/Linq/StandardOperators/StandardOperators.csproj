@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net6.0-windows</TargetFramework>
+    <TargetFramework>net8.0-windows7.0</TargetFramework>
     <NoWarn>IDE0051</NoWarn>
 
     <ImplicitUsings>enable</ImplicitUsings>
@@ -10,6 +10,11 @@
 
     <!-- One of the examples uses the Rect type -->
     <UseWPF>true</UseWPF>
+    
+    <!--
+      IDE0090: Use 'new(...)' - the initializers in these examples are clearer if we don't use this.
+    -->
+    <NoWarn>IDE0090</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>

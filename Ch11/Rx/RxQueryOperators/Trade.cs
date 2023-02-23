@@ -5,7 +5,7 @@ namespace RxQueryOperators;
 
 public record Trade(string StockName, decimal UnitPrice, int Number)
 {
-    public static IObservable<Trade> TestStream()
+    public static IObservable<Trade> GetTestStream()
     {
         return Observable.Create<Trade>(obs =>
         {

@@ -1,6 +1,6 @@
 ﻿namespace NestedTypes;
 
-internal static class FileSorter
+public static class FileSorter
 {
     public static string[] GetByNameLength(string path)
     {

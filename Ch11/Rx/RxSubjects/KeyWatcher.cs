@@ -2,14 +2,11 @@
 
 namespace RxSubjects;
 
-public class KeyWatcher : IObservable<char>
+public class KeyWatcher
 {
     private readonly Subject<char> _subject = new();
 
-    public IDisposable Subscribe(IObserver<char> observer)
-    {
-        return _subject.Subscribe(observer);
-    }
+    public IObservable<char> Keys => _subject;
 
     public void Run()
     {

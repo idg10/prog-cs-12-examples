@@ -19,7 +19,7 @@ public class KeyWatcher : IObservable<char>
             char c = Console.ReadKey(true).KeyChar;
 
             // ToArray duplicates the list, enabling us to iterate over a
-            // snapshot of our subscribers. This handles the case where an
+            // snapshot of our subscribers. This avoids errors when an
             // observer unsubscribes from inside its OnNext method.
             foreach (Subscription sub in _subscriptions.ToArray())
             {
@@ -28,27 +28,17 @@ public class KeyWatcher : IObservable<char>
         }
     }
 
-    private void RemoveSubscription(Subscription sub)
+    private class Subscription(KeyWatcher parent, IObserver<char> observer) : IDisposable
     {
-        _subscriptions.Remove(sub);
-    }
+        private KeyWatcher? _parent = parent;
 
-    private class Subscription : IDisposable
-    {
-        private KeyWatcher? _parent;
-        public Subscription(KeyWatcher parent, IObserver<char> observer)
-        {
-            _parent = parent;
-            Observer = observer;
-        }
-
-        public IObserver<char> Observer { get; }
+        public IObserver<char> Observer { get; } = observer;
 
         public void Dispose()
         {
             if (_parent != null)
             {
-                _parent.RemoveSubscription(this);
+                _parent._subscriptions.Remove(this);
                 _parent = null;
             }
         }

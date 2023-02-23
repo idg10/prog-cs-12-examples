@@ -4,10 +4,10 @@ class Program
 {
     static void Main()
     {
-        char[] letters = { 'a', 'b', 'c', 'd' };
+        char[] letters = ['a', 'b', 'c', 'd'];
         char lastLetter = letters[^1];
 
-        int[] numbers = { 1, 2, 3, 4, 5, 6, 7 };
+        int[] numbers = [1, 2, 3, 4, 5, 6, 7];
         // Gets 4th and 5th (but not, the 3rd, for reasons explained shortly)
         int[] theFourthTheFifth = numbers[3..5];
 
@@ -63,17 +63,17 @@ class Program
 
     public static void ArraySegmentSubrange()
     {
-        int[] numbers = { 1, 2, 3, 4, 5, 6, 7 };
+        int[] numbers = [1, 2, 3, 4, 5, 6, 7];
         ArraySegment<int> wholeArrayAsSegment = numbers;
         ArraySegment<int> theFourthTheFifth = wholeArrayAsSegment[3..5];
     }
 
     public static void SpanSubrange()
     {
-        int[] numbers = { 1, 2, 3, 4, 5, 6, 7 };
+        int[] numbers = [1, 2, 3, 4, 5, 6, 7];
         Span<int> wholeArrayAsSpan = numbers;
         Span<int> theFourthTheFifth = wholeArrayAsSpan[3..5];
-        ReadOnlySpan<char> textSpan = "dysfunctional".AsSpan();
+        ReadOnlySpan<char> textSpan = "dysfunctional";
         ReadOnlySpan<char> such = textSpan[3..6];
     }
 }

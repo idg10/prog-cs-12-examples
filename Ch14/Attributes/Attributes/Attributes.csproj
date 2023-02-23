@@ -2,11 +2,21 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     
     <NoWarn>CS0067</NoWarn>
+
+    <!--
+    This setting is required when you use the LibraryImport attribute.
+    That attribute triggers a code generator in the SDK to generate the code that
+    convert between .NET types and the unmanaged types used by the external API.
+    That generated code necessarily uses unsafe techniques because you can't avoid
+    that when calling out into unmanaged code. But the compiler will reject such
+    code unless this setting is present.
+    -->
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
 </Project>

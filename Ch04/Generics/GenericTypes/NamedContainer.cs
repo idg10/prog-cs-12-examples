@@ -1,13 +1,7 @@
 ﻿namespace GenericTypes;
 
-public class NamedContainer<T>
+public class NamedContainer<T>(T item, string name)
 {
-    public NamedContainer(T item, string name)
-    {
-        Item = item;
-        Name = name;
-    }
-
-    public T Item { get; }
-    public string Name { get; }
+    public T Item { get; } = item;
+    public string Name { get; } = name;
 }

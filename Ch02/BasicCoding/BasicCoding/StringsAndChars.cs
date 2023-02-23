@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Globalization;
+using System.Text.Json;
 
 namespace BasicCoding;
 
@@ -10,7 +11,7 @@ static class StringsAndChars
 
     internal static void CharactersVsChars()
     {
-        char[] chars = { 'c', 'a', 'f', 'e', (char)0x301, 's' };
+        char[] chars = ['c', 'a', 'f', 'e', (char)0x301, 's'];
         string text = new string(chars);
 
         Console.WriteLine(text);
@@ -61,5 +62,21 @@ static class StringsAndChars
         bool everythingIsOk)
     {
         Debug.Assert(everythingIsOk, $"Everything is *not* OK: {myApplicationModel}");
+    }
+
+    internal static void Utf8Literals()
+    {
+        using JsonDocument doc = JsonDocument.Parse("""{ "latitude": 51.50853000, "longitude": -0.12574000}""");
+        JsonElement root = doc.RootElement;
+        string locationName = "London";
+
+        if (root.TryGetProperty("location"u8, out JsonElement locationElement))
+        {
+            JsonElement latitudeElement = locationElement.GetProperty("latitude"u8);
+            JsonElement longitudeElement = locationElement.GetProperty("longitude"u8);
+            double latitude = latitudeElement.GetDouble();
+            double longitude = longitudeElement.GetDouble();
+            Console.WriteLine($"Location: {locationName}: {latitude},{longitude}");
+        }
     }
 }

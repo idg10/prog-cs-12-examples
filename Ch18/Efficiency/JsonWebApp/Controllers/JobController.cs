@@ -10,8 +10,8 @@ namespace JsonWebApp.Controllers;
 [ApiController]
 public class JobController : ControllerBase
 {
-    // Change to #if false to switch to low-allocation version from Example 8
-#if true
+    // Change to #if false to switch to low-allocation version from Example 21
+#if false
     [HttpPost]
     [Route("/jobs/create")]
     public void CreateJob([FromBody] JobDescription requestBody)
@@ -31,13 +31,6 @@ public class JobController : ControllerBase
     public record JobDescription(int DepartmentId, string JobCategory);
 
 #else
-
-        private static readonly byte[] Utf8TextJobCategory =
-            Encoding.UTF8.GetBytes("JobCategory");
-        private static readonly byte[] Utf8TextDepartmentId =
-            Encoding.UTF8.GetBytes("DepartmentId");
-        private static readonly byte[] Utf8TextArduous = Encoding.UTF8.GetBytes("arduous");
-        private static readonly byte[] Utf8TextTedious = Encoding.UTF8.GetBytes("tedious");
 
         [HttpPost]
         [Route("/jobs/create")]
@@ -104,11 +97,11 @@ public class JobController : ControllerBase
                     {
                         if (r.TokenType == JsonTokenType.String)
                         {
-                            if (r.ValueSpan.SequenceEqual(Utf8TextArduous))
+                            if (r.ValueSpan.SequenceEqual("arduous"u8))
                             {
                                 isArduous = true;
                             }
-                            else if (r.ValueSpan.SequenceEqual(Utf8TextTedious))
+                            else if (r.ValueSpan.SequenceEqual("tedious"u8))
                             {
                                 isArduous = false;
                             }
@@ -120,11 +113,11 @@ public class JobController : ControllerBase
 
                     if (r.TokenType == JsonTokenType.PropertyName)
                     {
-                        if (r.ValueSpan.SequenceEqual(Utf8TextJobCategory))
+                        if (r.ValueSpan.SequenceEqual("JobCategory"u8))
                         {
                             inJobCategoryProperty = true;
                         }
-                        else if (r.ValueSpan.SequenceEqual(Utf8TextDepartmentId))
+                        else if (r.ValueSpan.SequenceEqual("DepartmentId"u8))
                         {
                             inDepartmentIdProperty = true;
                         }
@@ -136,7 +129,6 @@ public class JobController : ControllerBase
             }
         }
 
-    public record JobDescription(int DepartmentId, string JobCategory);
 #endif
     private static void CreateTediousJob(int departmentId)
     {

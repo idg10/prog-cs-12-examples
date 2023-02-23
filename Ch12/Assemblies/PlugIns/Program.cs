@@ -12,10 +12,10 @@ string plugInDllPath = Path.Combine(
     "MyPlugIn.dll");
 
 Assembly[] plugInApiAssemblies =
-{
+[
     typeof(IPlugIn).Assembly,
     typeof(JsonReader).Assembly
-};
+];
 var plugInAssemblyNames = new HashSet<string>(
     plugInApiAssemblies.Select(a => a.GetName().Name!));
 

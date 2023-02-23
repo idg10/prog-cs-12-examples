@@ -1,13 +1,8 @@
 ﻿namespace Disposable;
 
-public sealed class Logger : IDisposable
+public sealed class Logger(string filePath) : IDisposable
 {
-    private StreamWriter? _file;
-
-    public Logger(string filePath)
-    {
-        _file = File.CreateText(filePath);
-    }
+    private StreamWriter? _file = File.CreateText(filePath);
 
     public void Dispose()
     {

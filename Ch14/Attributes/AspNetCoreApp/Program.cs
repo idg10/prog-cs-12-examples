@@ -38,15 +38,15 @@ var builder = WebApplication.CreateBuilder(args);
 //  # (PowerShell will prompt you. Type any username and a bogus password)
 //  iwr https://localhost:7225/items/42 -Authentication Basic -Credential $creds
 //
-// That will invoke the endpoint in a way that satisfies this very articifial
+// That will invoke the endpoint in a way that satisfies this very artificial
 // auth setup. Or you could use any other tool capable of sending HTTP requests
 // with basic authentication, e.g., the Postman tool.
 
 builder.Services
     .AddAuthentication("Basic")
     .AddScheme<AuthenticationSchemeOptions, VeryBasic>("Basic", null);
-builder.Services.AddAuthorization(auth =>
-    auth.AddPolicy("Basic", pb => pb.RequireAuthenticatedUser()));
+builder.Services.AddAuthorizationBuilder()
+    .AddPolicy("Basic", pb => pb.RequireAuthenticatedUser());
 
 var app = builder.Build();
 app.UseHttpsRedirection();
@@ -72,17 +72,9 @@ app.Run();
 /// <remarks>
 /// This
 /// </remarks>
-class VeryBasic : AuthenticationHandler<AuthenticationSchemeOptions>
+class VeryBasic(IOptionsMonitor<AuthenticationSchemeOptions> options, ILoggerFactory logger, UrlEncoder encoder)
+    : AuthenticationHandler<AuthenticationSchemeOptions>(options, logger, encoder)
 {
-    public VeryBasic(
-        IOptionsMonitor<AuthenticationSchemeOptions> options,
-        ILoggerFactory logger,
-        UrlEncoder encoder,
-        ISystemClock clock)
-        : base(options, logger, encoder, clock)
-    {
-    }
-
     protected override Task HandleChallengeAsync(AuthenticationProperties properties)
     {
         // For some browsers, the presence of this WWWAuthenticate header will

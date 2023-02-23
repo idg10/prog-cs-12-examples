@@ -21,6 +21,9 @@ public partial class MainWindow : Window
             tradeInfoTextBox.AppendText(
                 $"{t.StockName}: {t.Number} at {t.UnitPrice}\r\n");
         });
+
+        new UseCurrentDispatcher().Show();
+        new WpfSpecificObserveOn().Show();
     }
 
     private static IObservable<Trade> GetTradeStream()

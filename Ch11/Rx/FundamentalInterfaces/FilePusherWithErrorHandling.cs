@@ -12,7 +12,6 @@ public class FilePusherWithErrorHandling : IObservable<string>
     {
         StreamReader? sr = null;
         string? line = null;
-        bool failed = false;
 
         try
         {
@@ -20,20 +19,12 @@ public class FilePusherWithErrorHandling : IObservable<string>
             {
                 try
                 {
-                    if (sr == null)
-                    {
-                        sr = new StreamReader(_path);
-                    }
-                    if (sr.EndOfStream)
-                    {
-                        break;
-                    }
+                    sr ??= new StreamReader(_path);
                     line = sr.ReadLine();
                 }
-                catch (IOException x)
+                catch (IOException ex)
                 {
-                    observer.OnError(x);
-                    failed = true;
+                    observer.OnError(ex);
                     break;
                 }
 
@@ -43,27 +34,21 @@ public class FilePusherWithErrorHandling : IObservable<string>
                 }
                 else
                 {
+                    observer.OnCompleted();
                     break;
                 }
             }
         }
         finally
         {
-            if (sr != null)
-            {
-                sr.Dispose();
-            }
+            sr?.Dispose();
         }
-        if (!failed)
-        {
-            observer.OnCompleted();
-        }
-        return NullDisposable.Instance;
+        return EmptyDisposable.Instance;
     }
 
-    private class NullDisposable : IDisposable
+    private class EmptyDisposable : IDisposable
     {
-        public static NullDisposable Instance = new();
+        public static EmptyDisposable Instance = new();
         public void Dispose() { }
     }
 }

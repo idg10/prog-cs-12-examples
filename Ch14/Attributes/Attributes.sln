@@ -9,9 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Attributes", "Attributes\At
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomAttributes", "CustomAttributes\CustomAttributes.csproj", "{BB389D95-B4A5-4799-B909-37F1E83CFDE7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCoreApp", "AspNetCoreApp\AspNetCoreApp.csproj", "{D8941799-6747-43C3-B061-E433EA7EAAFA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCoreApp", "AspNetCoreApp\AspNetCoreApp.csproj", "{D8941799-6747-43C3-B061-E433EA7EAAFA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CallerExpression", "CallerExpression\CallerExpression.csproj", "{AD217F62-D4CD-4C9A-9DF5-3E4091852D5A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CallerExpression", "CallerExpression\CallerExpression.csproj", "{AD217F62-D4CD-4C9A-9DF5-3E4091852D5A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SourceGenerationAttributes", "SourceGenerationAttributes\SourceGenerationAttributes.csproj", "{81F602E3-F761-41CD-A08F-5F5867752E99}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{AD217F62-D4CD-4C9A-9DF5-3E4091852D5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD217F62-D4CD-4C9A-9DF5-3E4091852D5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD217F62-D4CD-4C9A-9DF5-3E4091852D5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81F602E3-F761-41CD-A08F-5F5867752E99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81F602E3-F761-41CD-A08F-5F5867752E99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81F602E3-F761-41CD-A08F-5F5867752E99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81F602E3-F761-41CD-A08F-5F5867752E99}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

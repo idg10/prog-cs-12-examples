@@ -15,8 +15,8 @@ public partial class MainWindow : Window
         InitializeComponent();
 
         IObservable<EventPattern<MouseEventArgs>> mouseMoves =
-            Observable.FromEventPattern<MouseEventArgs>(
-                background, nameof(background.MouseMove));
+            Observable.FromEventPattern<MouseEventHandler, MouseEventArgs>(
+                h => background.MouseMove += h, h => background.MouseMove -= h);
 
         IObservable<Point> dragPositions =
             from move in mouseMoves

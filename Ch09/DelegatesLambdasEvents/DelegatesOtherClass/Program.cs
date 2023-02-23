@@ -1,8 +1,8 @@
 ﻿namespace DelegatesOtherClass;
 
-internal class Program
+internal static class Program
 {
-    static void Main(string[] args)
+    static void Main()
     {
         Predicate<int> p1 = Tests.IsGreaterThanZero;
         Predicate<int> p2 = Tests.IsLessThanZero;

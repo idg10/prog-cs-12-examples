@@ -1,5 +1,5 @@
 ﻿using RxSubjects;
 
 var kw = new KeyWatcher();
-kw.Subscribe(Console.WriteLine);
+kw.Keys.Subscribe(Console.WriteLine);
 kw.Run();

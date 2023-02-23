@@ -1,10 +1,3 @@
-﻿namespace Serialization
-{
-    class Program
-    {
-        static void Main()
-        {
-            SystemTextJson.Use();
-        }
-    }
-}
+﻿using Serialization;
+
+SystemTextJson.SerializeJson();

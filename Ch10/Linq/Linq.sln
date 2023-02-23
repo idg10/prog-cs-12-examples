@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueryExpressions", "QueryEx
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomLinqExample", "CustomLinqExample\CustomLinqExample.csproj", "{D662E9FC-363A-4EE7-B0DB-02D96FC1F5B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueryInifiniteSource", "QueryInifiniteSource\QueryInifiniteSource.csproj", "{ED20C4A4-C404-421D-A396-83D25CC45951}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueryInfiniteSource", "QueryInfiniteSource\QueryInfiniteSource.csproj", "{ED20C4A4-C404-421D-A396-83D25CC45951}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StandardOperators", "StandardOperators\StandardOperators.csproj", "{6C19E94B-62C0-49C8-9E68-93334A558344}"
 EndProject

@@ -4,10 +4,10 @@ using System.Windows;
 
 class UseItem
 {
-    public static void CompilesButProbablyNotAGoodIdea()
+    public static void ModifyPropertyByRef()
     {
         var item = new Item();
-        Point location = item.Location;
+        ref Point location = ref item.Location;
         location.X = 123;
     }
 }

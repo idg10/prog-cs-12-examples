@@ -35,7 +35,7 @@ internal class PreprocessingDirectives
     intt x;
 #endif
 
-#pragma warning disable CS0168
+#pragma warning disable CS0169
     int a;
 
     private static void DoWork() { }

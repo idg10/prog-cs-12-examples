@@ -24,5 +24,6 @@ class Program
                           bf.DeclaringType, bf.ReflectedType);
         Console.WriteLine("Derived Declaring: {0}, Reflected: {1}",
                           df.DeclaringType, df.ReflectedType);
+        Console.WriteLine("Same:   {0}", bf == df);
     }
 }

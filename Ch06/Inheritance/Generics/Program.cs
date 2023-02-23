@@ -11,14 +11,14 @@ class Program
 
 public class GenericBase1<T>
 {
-    public T? Item { get; set; }
+    public required T Item { get; set; }
 }
 
 public class GenericBase2<TKey, TValue>
     where TValue : class
 {
-    public TKey? Key { get; set; }
-    public TValue? Value { get; set; }
+    public required TKey Key { get; set; }
+    public required TValue Value { get; set; }
 }
 
 public class NonGenericDerived : GenericBase1<string>

@@ -1,12 +1,7 @@
 ﻿namespace Exceptions;
 
 // Dummy type to enable Example 6 to compile
-class RequestFailedException : Exception
+class RequestFailedException(int status) : Exception
 {
-    public RequestFailedException(int status)
-    {
-        Status = status;
-    }
-
-    public int Status { get; }
+    public int Status { get; } = status;
 }

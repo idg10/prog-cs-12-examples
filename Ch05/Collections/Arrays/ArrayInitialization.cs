@@ -12,12 +12,23 @@ public static class ArrayInitialization
         workingWeekDayNames[4] = "Friday";
     }
 
+    public static void CollectionExpressions()
+    {
+        string[] workingWeekDayNames =
+            ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+
+        string[] weekDayNames = ["Sunday", .. workingWeekDayNames, "Saturday"];
+
+        Console.WriteLine(string.Join(", ", weekDayNames));
+    }
+
     public static void InitializerExpression()
     {
         var workingWeekDayNames = new string[]
             { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday" };
     }
 
+#pragma warning disable IDE0300 // Simplify collection initialization - the following examples illustrate the older syntax, so we don't want to be told we can change these to collection expressions
     public static void ShorterInitializer()
     {
         string[] workingWeekDayNames =
@@ -35,15 +46,27 @@ public static class ArrayInitialization
         SetHeaders(new[] { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday" });
     }
 
-    public static void Jagged()
+    public static void JaggedCollectionExpression()
     {
-        int[][] arrays = new int[5][]
+        int[][] arrays =
+        [
+            [1, 2],
+            [1, 2, 3, 4, 5, 6],
+            [1, 2, 4],
+            [1],
+            [1, 2, 3, 4, 5]
+        ];
+    }
+
+    public static void JaggedArrayInitializer()
+    {
+        var arrays = new int[5][]
         {
-                new[] { 1, 2 },
-                new[] { 1, 2, 3, 4, 5, 6 },
-                new[] { 1, 2, 4 },
-                new[] { 1 },
-                new[] { 1, 2, 3, 4, 5 }
+            new[] { 1, 2 },
+            new[] { 1, 2, 3, 4, 5, 6 },
+            new[] { 1, 2, 4 },
+            new[] { 1 },
+            new[] { 1, 2, 3, 4, 5 }
         };
     }
 
@@ -72,7 +95,7 @@ public static class ArrayInitialization
         };
     }
 
-    private static void SetHeaders(string[] v)
+    private static void SetHeaders(IEnumerable<string> v)
     {
     }
 }

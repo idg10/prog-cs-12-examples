@@ -1,21 +1,25 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29424.173
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TypeIdentity", "TypeIdentity\TypeIdentity.csproj", "{48F9C376-C064-415E-99BD-EE3F4769527B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TypeIdentity", "TypeIdentity\TypeIdentity.csproj", "{48F9C376-C064-415E-99BD-EE3F4769527B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Loading", "Loading\Loading.csproj", "{03813F48-FF0F-41CC-B732-6F7643DC8C91}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Loading", "Loading\Loading.csproj", "{03813F48-FF0F-41CC-B732-6F7643DC8C91}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryContainingCustomComparer", "LibraryContainingCustomComparer\LibraryContainingCustomComparer.csproj", "{F93866AC-2CD9-40B9-ACCB-AEF8BA5D2770}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LibraryContainingCustomComparer", "LibraryContainingCustomComparer\LibraryContainingCustomComparer.csproj", "{F93866AC-2CD9-40B9-ACCB-AEF8BA5D2770}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlugIns", "PlugIns\PlugIns.csproj", "{87E60DCE-B128-43CD-9ADA-BE292C6B9F2D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlugIns", "PlugIns\PlugIns.csproj", "{87E60DCE-B128-43CD-9ADA-BE292C6B9F2D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlugInInterface", "PlugInInterface\PlugInInterface.csproj", "{A291313F-107E-4CB8-A6BD-0C22B79EE260}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlugInInterface", "PlugInInterface\PlugInInterface.csproj", "{A291313F-107E-4CB8-A6BD-0C22B79EE260}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyPlugIn", "MyPlugIn\MyPlugIn.csproj", "{3A5E6390-1D33-41CD-90EF-FE53E6BEE9A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyPlugIn", "MyPlugIn\MyPlugIn.csproj", "{3A5E6390-1D33-41CD-90EF-FE53E6BEE9A0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Names", "Names\Names.csproj", "{7171CE70-0E93-4382-B129-472B6587D7B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Names", "Names\Names.csproj", "{7171CE70-0E93-4382-B129-472B6587D7B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trimmed", "Trimmed\Trimmed.csproj", "{D64CD3DC-7A10-453F-896F-522FA2F42213}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NativeAot", "NativeAot\NativeAot.csproj", "{750BC647-BE60-4842-BC3D-8CE6CB473A24}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +55,14 @@ Global
 		{7171CE70-0E93-4382-B129-472B6587D7B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7171CE70-0E93-4382-B129-472B6587D7B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7171CE70-0E93-4382-B129-472B6587D7B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D64CD3DC-7A10-453F-896F-522FA2F42213}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D64CD3DC-7A10-453F-896F-522FA2F42213}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D64CD3DC-7A10-453F-896F-522FA2F42213}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D64CD3DC-7A10-453F-896F-522FA2F42213}.Release|Any CPU.Build.0 = Release|Any CPU
+		{750BC647-BE60-4842-BC3D-8CE6CB473A24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{750BC647-BE60-4842-BC3D-8CE6CB473A24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{750BC647-BE60-4842-BC3D-8CE6CB473A24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{750BC647-BE60-4842-BC3D-8CE6CB473A24}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

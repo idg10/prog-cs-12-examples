@@ -16,6 +16,6 @@ public class ArgumentNullException
 {
     public static void ThrowIfNull(
         [NotNull] object? argument,
-        [CallerArgumentExpression("argument")] string? paramName =  null)
+        [CallerArgumentExpression(nameof(argument))] string? paramName =  null)
     {
 #endif

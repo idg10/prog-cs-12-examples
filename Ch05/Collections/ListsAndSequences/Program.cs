@@ -18,8 +18,15 @@ public class Program
         Console.WriteLine(numbers.Count);
         Console.WriteLine($"{numbers[0]}, {numbers[1]}");
 
+#pragma warning disable CA1859 // Use concrete types when possible for improved performance
         IList<int> array = new[] { 1, 2, 3 };
         array.Add(4);  // Will throw an exception
+#pragma warning restore CA1859 // Use concrete types when possible for improved performance
+    }
+
+    public static void ListInitializeWithCollectionExpression()
+    {
+        List<int> numbers = [123, 99, 42];
     }
 
     public static void ListInitializer()

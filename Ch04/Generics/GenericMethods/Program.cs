@@ -6,7 +6,7 @@ class Program
 {
     static void Main()
     {
-        int[] values = { 1, 2, 3 };
+        int[] values = [1, 2, 3];
         int last = GetLast<int>(values);
 
         Console.WriteLine(last);
@@ -23,13 +23,13 @@ class Program
 
     private static void UseInference()
     {
-        int[] values = { 1, 2, 3 };
+        int[] values = [1, 2, 3];
         int last = GetLast(values);
 
         Console.WriteLine(last);
     }
 
-    // This example illustrates a technique that doesn't work in C#,
+    // This example illustrates code that doesn't work,
     // which is why it's in this #if false block
 #if false
     public static T Add<T>(T x, T y)

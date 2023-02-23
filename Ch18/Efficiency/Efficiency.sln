@@ -1,13 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29424.173
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34112.27
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inefficiency", "Inefficiency\Inefficiency.csproj", "{05FAE379-A06B-4A60-A510-68ECF62F18BB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Inefficiency", "Inefficiency\Inefficiency.csproj", "{05FAE379-A06B-4A60-A510-68ECF62F18BB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsingSpan", "UsingSpan\UsingSpan.csproj", "{E3F46C20-1C19-41D4-9CEC-5D2CAEFDAD93}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UsingSpan", "UsingSpan\UsingSpan.csproj", "{E3F46C20-1C19-41D4-9CEC-5D2CAEFDAD93}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonWebApp", "JsonWebApp\JsonWebApp.csproj", "{D5E02F3E-580A-47C7-A2A7-28D45A1E420B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JsonWebApp", "JsonWebApp\JsonWebApp.csproj", "{D5E02F3E-580A-47C7-A2A7-28D45A1E420B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CollectionExpressions", "CollectionExpressions\CollectionExpressions.csproj", "{2D4A7BC8-7A0A-4D34-8689-A1966F65A27D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RefLikeTypes", "RefLikeTypes\RefLikeTypes.csproj", "{8FC17C06-141B-48A8-95C3-5418D2051708}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +31,14 @@ Global
 		{D5E02F3E-580A-47C7-A2A7-28D45A1E420B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5E02F3E-580A-47C7-A2A7-28D45A1E420B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D5E02F3E-580A-47C7-A2A7-28D45A1E420B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D4A7BC8-7A0A-4D34-8689-A1966F65A27D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D4A7BC8-7A0A-4D34-8689-A1966F65A27D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D4A7BC8-7A0A-4D34-8689-A1966F65A27D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D4A7BC8-7A0A-4D34-8689-A1966F65A27D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FC17C06-141B-48A8-95C3-5418D2051708}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FC17C06-141B-48A8-95C3-5418D2051708}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FC17C06-141B-48A8-95C3-5418D2051708}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FC17C06-141B-48A8-95C3-5418D2051708}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

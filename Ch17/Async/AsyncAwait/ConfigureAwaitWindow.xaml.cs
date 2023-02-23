@@ -31,7 +31,7 @@ public partial class ConfigureAwaitWindow : Window
             Stream getStream = await getStreamTask.ConfigureAwait(false);
 
             Task copyTask = getStream.CopyToAsync(f);
-            await copyTask.ConfigureAwait(false);
+            await copyTask.ConfigureAwait(ConfigureAwaitOptions.None);
         }
     }
 }

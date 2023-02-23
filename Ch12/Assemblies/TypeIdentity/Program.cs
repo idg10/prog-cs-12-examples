@@ -10,7 +10,7 @@ namespace System
 
 class Program
 {
-    static void Main(string[] args)
+    static void Main()
     {
         System.String? s = null;
         ShowStaticTypeNameAndAssembly(s);
@@ -24,6 +24,6 @@ class Program
     {
         Type t = typeof(T);
         Console.WriteLine(
-            $"Type: {t.FullName}. Assembly {t.Assembly.FullName}.");
+            $"Type: {t.FullName}. Assembly: {t.Assembly.FullName}.");
     }
 }

@@ -17,7 +17,7 @@ public static class Aggregation
         DateOnly m = mathsCourses.Max(c => c.PublicationDate);
     }
 
-    public static void MaxOperatorWithProjectionForCriteria()
+    public static void MaxByOperatorWithProjectionForCriteria()
     {
         Course? mostRecentlyPublished = mathsCourses.MaxBy(c => c.PublicationDate);
     }

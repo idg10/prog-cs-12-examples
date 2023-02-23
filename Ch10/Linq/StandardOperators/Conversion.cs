@@ -12,7 +12,7 @@ public static class Conversion
     {
         IEnumerable<object> sequence = Course.Catalog.Select(c => (object)c);
 
-        var courseSequence = sequence.Cast<Course>();
+        IEnumerable<Course> courseSequence = sequence.Cast<Course>();
     }
 
     public static void CreateLookup()

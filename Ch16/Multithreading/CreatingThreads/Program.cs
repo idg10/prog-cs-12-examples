@@ -4,7 +4,7 @@ internal static class Program
 {
     private static readonly HttpClient http = new();
 
-    private static void Main(string[] args)
+    private static void Main()
     {
         Thread t1 = new(MyThreadEntryPoint);
         Thread t2 = new(MyThreadEntryPoint);

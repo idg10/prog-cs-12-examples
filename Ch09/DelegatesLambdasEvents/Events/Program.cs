@@ -5,7 +5,7 @@ class Program
     static void Main()
     {
         var source = new Eventful();
-        source.Announcement += m => Console.WriteLine("Announcement: " + m);
+        source.Announcement += m => Console.WriteLine($"Announcement: {m}");
     }
 
     // This example shows how not to do something. To see the compiler error, change

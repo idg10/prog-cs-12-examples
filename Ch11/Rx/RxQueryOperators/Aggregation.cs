@@ -6,7 +6,7 @@ public static class Aggregation
 {
     public static void SumWithAggregate()
     {
-        IObservable<Trade> trades = Trade.TestStream();
+        IObservable<Trade> trades = Trade.GetTestStream();
 
         IObservable<long> tradeVolume = trades.Aggregate(
             0L, (total, trade) => total + trade.Number);
@@ -15,7 +15,7 @@ public static class Aggregation
 
     public static void RunningTotalWithScan()
     {
-        IObservable<Trade> trades = Trade.TestStream();
+        IObservable<Trade> trades = Trade.GetTestStream();
 
         IObservable<long> tradeVolume = trades.Scan(
             0L, (total, trade) => total + trade.Number);

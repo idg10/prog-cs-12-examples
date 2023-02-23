@@ -6,7 +6,7 @@ class EquivalentOfLock
 
     private decimal _total;
 
-    private readonly List<string> _saleDetails = new();
+    private readonly List<string> _saleDetails = [];
 
     public decimal Total
     {

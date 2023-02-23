@@ -8,10 +8,10 @@ class Program
     {
     }
 
-    public static int GetIndexOfFirstNonEmptyBin(int[] bins) =>
-        Array.FindIndex(bins, IsGreaterThanZero);
+    public static int GetIndexOfFirstNonEmptyBin(int[] bins)
+        => Array.FindIndex(bins, IsNonZero);
 
-    private static bool IsGreaterThanZero(int value) => value > 0;
+    private static bool IsNonZero(int value) => value != 0;
 
     // These examples illustrates how various types and members declared. Since these are all
     // defined by .NET, we don't in fact need to define them ourselves, hence the #if false.
@@ -43,21 +43,21 @@ class Program
 
     public static void CreatingADelegate()
     {
-        var p = IsGreaterThanZero;
+        var p = IsNonZero;
 
         Console.WriteLine(p(42));
     }
 
     public static void ConstructingADelegate()
     {
-        var p = new Predicate<int>(IsGreaterThanZero);
+        var p = new Predicate<int>(IsNonZero);
 
         Console.WriteLine(p(42));
     }
 
     public static void ImplicitDelegateCreation()
     {
-        Predicate<int> p = IsGreaterThanZero;
+        Predicate<int> p = IsNonZero;
 
         Console.WriteLine(p(42));
     }
@@ -89,8 +89,7 @@ class Program
         var zeroThreshold = new ThresholdComparer { Threshold = 0 };
 
         MethodInfo m = typeof(ThresholdComparer).GetMethod("IsGreaterThan")!;
-        var greaterThanZero = (Predicate<int>)m.CreateDelegate(
-            typeof(Predicate<int>), zeroThreshold);
+        var greaterThanZero = m.CreateDelegate<Predicate<int>>(zeroThreshold);
 
         Console.WriteLine(greaterThanZero(42));
     }
@@ -100,34 +99,6 @@ class Program
         bool result = userCallback(42);
         Console.WriteLine(result);
     }
-
-    public static void TestForMajority(Predicate<int> userCallbacks)
-    {
-        int trueCount = 0;
-        int falseCount = 0;
-        foreach (Predicate<int> p in userCallbacks.GetInvocationList())
-        {
-            bool result = p(42);
-            if (result)
-            {
-                trueCount += 1;
-            }
-            else
-            {
-                falseCount += 1;
-            }
-        }
-        if (trueCount > falseCount)
-        {
-            Console.WriteLine("The majority returned true");
-        }
-        else if (falseCount > trueCount)
-        {
-            Console.WriteLine("The majority returned false");
-        }
-        else
-        {
-            Console.WriteLine("It's a tie");
-        }
-    }
 }
+
+public delegate void Log(string message, string? source = "");

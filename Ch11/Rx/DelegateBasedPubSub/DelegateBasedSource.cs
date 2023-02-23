@@ -6,25 +6,16 @@ public static class DelegateBasedSource
 {
     public static IObservable<string> GetFilePusher(string path)
     {
-        return Observable.Create<string>(observer =>
+        return Observable.Create<string>(async (observer, cancel) =>
         {
             using (var sr = new StreamReader(path))
             {
-                while (!sr.EndOfStream)
+                while (await sr.ReadLineAsync(cancel) is string line)
                 {
-                    string? line = sr.ReadLine();
-                    if (line is not null)
-                    {
-                        observer.OnNext(line);
-                    }
-                    else
-                    {
-                        break;
-                    }
+                    observer.OnNext(line);
                 }
             }
             observer.OnCompleted();
-            return () => { };
         });
     }
 }

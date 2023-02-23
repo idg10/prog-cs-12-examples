@@ -27,9 +27,9 @@ public static class Projection
     {
         using var dbCtx = new ExampleDbContext();
 
-        var pq = from product in dbCtx.Product
-                 where product.ListPrice > 3000
-                 select product;
+        IQueryable<Product> pq = from product in dbCtx.Product
+                                 where product.ListPrice > 3000
+                                 select product;
         foreach (var prod in pq)
         {
             Console.WriteLine($"{prod.Name} ({prod.Size}): {prod.ListPrice}");
@@ -51,7 +51,7 @@ public static class Projection
 
     public static void SelectAsTransform()
     {
-        int[] numbers = { 0, 1, 2, 3, 4, 5 };
+        int[] numbers = [0, 1, 2, 3, 4, 5];
 
         IEnumerable<int> doubled = numbers.Select(x => 2 * x);
         IEnumerable<int> squared = numbers.Select(x => x * x);
@@ -60,8 +60,8 @@ public static class Projection
 
     public static void SelectManyQueryExpression()
     {
-        int[] numbers = { 1, 2, 3, 4, 5 };
-        string[] letters = { "A", "B", "C" };
+        int[] numbers = [1, 2, 3, 4, 5];
+        string[] letters = ["A", "B", "C"];
 
         IEnumerable<string> flattened = from number in numbers
                                         from letter in letters
@@ -74,8 +74,8 @@ public static class Projection
 
     public static void SelectManyOperator()
     {
-        int[] numbers = { 1, 2, 3, 4, 5 };
-        string[] letters = { "A", "B", "C" };
+        int[] numbers = [1, 2, 3, 4, 5];
+        string[] letters = ["A", "B", "C"];
 
         IEnumerable<string> flattened = numbers.SelectMany(
             number => letters,
@@ -85,34 +85,34 @@ public static class Projection
     public static void SelectManyFlattenQueryExpression()
     {
         int[][] arrays =
-        {
-                new[] { 1, 2 },
-                new[] { 1, 2, 3, 4, 5, 6 },
-                new[] { 1, 2, 4 },
-                new[] { 1 },
-                new[] { 1, 2, 3, 4, 5 }
-            };
+        [
+            [1, 2],
+            [1, 2, 3, 4, 5, 6],
+            [1, 2, 4],
+            [1],
+            [1, 2, 3, 4, 5]
+        ];
 
         IEnumerable<int> flattened = from row in arrays
-                                    from number in row
-                                    select number;
+                                     from number in row
+                                     select number;
     }
 
     public static void SelectManyOperatorWithoutProjection()
     {
         int[][] arrays =
-        {
-                new[] { 1, 2 },
-                new[] { 1, 2, 3, 4, 5, 6 },
-                new[] { 1, 2, 4 },
-                new[] { 1 },
-                new[] { 1, 2, 3, 4, 5 }
-            };
+        [
+            [1, 2],
+            [1, 2, 3, 4, 5, 6],
+            [1, 2, 4],
+            [1],
+            [1, 2, 3, 4, 5]
+        ];
 
-        var flattened = arrays.SelectMany(row => row);
+        IEnumerable<int> flattened = arrays.SelectMany(row => row);
     }
 
-    static IEnumerable<T2> MySelectMany<T, T2>(
+    public static IEnumerable<T2> MySelectMany<T, T2>(
         this IEnumerable<T> src, Func<T, IEnumerable<T2>> getInner)
     {
         foreach (T itemFromOuterCollection in src)

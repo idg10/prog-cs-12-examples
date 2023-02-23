@@ -1,17 +1,11 @@
 ﻿namespace CustomAttributes;
 
 [AttributeUsage(AttributeTargets.Class)]
-public class PluginInformationAttribute : Attribute
+public class PluginInformationAttribute(string name, string author) : Attribute
 {
-    public PluginInformationAttribute(string name, string author)
-    {
-        Name = name;
-        Author = author;
-    }
+    public string Name { get; } = name;
 
-    public string Name { get; }
-
-    public string Author { get; }
+    public string Author { get; } = author;
 
     public string? Description { get; set; }
 }

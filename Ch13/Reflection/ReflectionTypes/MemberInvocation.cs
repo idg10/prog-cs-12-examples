@@ -30,10 +30,10 @@ namespace ReflectionTypes
                 Type t = Type.GetType(typeName)
                     ?? throw new ArgumentException(
                         $"Type {typeName} not found", nameof(typeName));
-                object instance = Activator.CreateInstance(t)!;
                 MethodInfo m = t.GetMethod(member)
                     ?? throw new ArgumentException(
                         $"Method {member} not found", nameof(member)); ;
+                object instance = Activator.CreateInstance(t)!;
                 return m.Invoke(instance, args);
             }
         }

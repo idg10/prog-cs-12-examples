@@ -4,15 +4,16 @@ public static class Grouping
 {
     public static void GroupingQueryExpression()
     {
-        var subjectGroups = from course in Course.Catalog
-                            group course by course.Category;
+        IEnumerable<IGrouping<string, Course>> subjectGroups =
+            from course in Course.Catalog
+            group course by course.Category;
 
-        foreach (var group in subjectGroups)
+        foreach (IGrouping<string, Course> group in subjectGroups)
         {
-            Console.WriteLine("Category: " + group.Key);
+            Console.WriteLine($"Category: {group.Key}");
             Console.WriteLine();
 
-            foreach (var course in group)
+            foreach (Course course in group)
             {
                 Console.WriteLine(course.Title);
             }
@@ -22,24 +23,26 @@ public static class Grouping
 
     public static void ExpandingSimpleGroupingQuery()
     {
-        var subjectGroups = Course.Catalog.GroupBy(course => course.Category);
+        IEnumerable<IGrouping<string, Course>> subjectGroups = 
+            Course.Catalog.GroupBy(course => course.Category);
     }
 
     public static void GroupingQueryItemProjection()
     {
-        var subjectGroups = from course in Course.Catalog
-                            group course.Title by course.Category;
+        IEnumerable<IGrouping<string, string>> subjectGroups =
+            from course in Course.Catalog
+            group course.Title by course.Category;
     }
 
     public static void ExpandedGroupingQueryItemProjection()
     {
-        var subjectGroups = Course.Catalog
+        IEnumerable<IGrouping<string, string>> subjectGroups = Course.Catalog
             .GroupBy(course => course.Category, course => course.Title);
     }
 
     public static void GroupingQueryGroupProjection()
     {
-        var subjectGroups =
+        IEnumerable<string> subjectGroups =
            from course in Course.Catalog
            group course by course.Category into category
            select $"Category '{category.Key}' contains {category.Count()} courses";
@@ -79,7 +82,7 @@ public static class Grouping
         foreach (var group in bySubjectAndYear)
         {
             Console.WriteLine($"{group.Key.Category} ({group.Key.Year})");
-            foreach (var course in group)
+            foreach (Course course in group)
             {
                 Console.WriteLine(course.Title);
             }

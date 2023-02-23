@@ -14,14 +14,13 @@ class DiagnosticWriter : IAsyncDisposable
 
     public Task LogAsync(string message)
     {
-        if (_sw is null)
-        { throw new ObjectDisposedException(nameof(DiagnosticWriter)); }
+        ObjectDisposedException.ThrowIf(_sw is null, nameof(DiagnosticWriter));
         return _sw.WriteLineAsync(message);
     }
 
     public async ValueTask DisposeAsync()
     {
-        if (_sw != null)
+        if (_sw is not null)
         {
             await LogAsync("Done");
             await _sw.DisposeAsync();

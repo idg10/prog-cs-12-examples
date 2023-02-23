@@ -4,7 +4,7 @@
     {
         internal static void ConditionalAnd(string s)
         {
-            if (s != null && s.Length > 10)
+            if (s is not null && s.Length > 10)
             {
                 Console.WriteLine("A piece of string is over 10 chars long");
             }
@@ -19,7 +19,7 @@
 
         internal static void ConditionalEvaluation(string s)
         {
-            int characterCount = s == null ? 0 : s.Length;
+            int characterCount = s is null ? 0 : s.Length;
 
             Console.WriteLine($"You have supplied {characterCount} chars");
         }

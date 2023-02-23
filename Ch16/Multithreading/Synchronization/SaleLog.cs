@@ -3,20 +3,12 @@
 public class SaleLog
 {
     private readonly object _sync = new();
-
     private decimal _total;
-
-    private readonly List<string> _saleDetails = new();
+    private readonly List<string> _saleDetails = [];
 
     public decimal Total
     {
-        get
-        {
-            lock (_sync)
-            {
-                return _total;
-            }
-        }
+        get { lock (_sync) { return _total; } }
     }
 
     public void AddSale(string item, decimal price)

@@ -108,17 +108,17 @@ class Program
             "PI: {0}. Square root of 2: {1}", Math.PI, Math.Sqrt(2)));
         Console.WriteLine(string.Format("It is currently {0}", DateTime.Now));
         var r = new Random();
-        Console.WriteLine(string.Format(
+        Console.WriteLine(
             "{0}, {1}, {2}, {3}",
-            r.Next(10), r.Next(10), r.Next(10), r.Next(10)));
+            r.Next(10), r.Next(10), r.Next(10), r.Next(10));
 
-        Console.WriteLine(string.Format(
+        Console.WriteLine(
             "{0}, {1}, {2}, {3}",
-            new object[] { r.Next(10), r.Next(10), r.Next(10), r.Next(10) }));
+            new object[] { r.Next(10), r.Next(10), r.Next(10), r.Next(10) });
     }
 
     /* This is for illustration only
-    public static string Format(string format, params object[] args)
+    public static void WriteLine([StringSyntax("CompositeFormat")] string format, params object?[]? arg);
     */
 
     static double GetAverageDistanceFrom(

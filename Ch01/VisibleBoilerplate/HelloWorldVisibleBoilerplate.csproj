@@ -2,9 +2,9 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <!--
-      Normally, new C# 10.0 projects have this:
+      Normally, new C# 12.0 projects have this:
 
     <ImplicitUsings>enable</ImplicitUsings>
 

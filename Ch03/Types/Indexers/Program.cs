@@ -1,4 +1,4 @@
-﻿var numbers = new List<int> { 1, 2, 1, 4 };
+﻿List<int> numbers = [1, 2, 1, 4];
 numbers[2] += numbers[1];
 Console.WriteLine(numbers[0]);
 
